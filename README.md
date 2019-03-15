@@ -1,1 +1,1 @@
-# InsulinCalc
+A simple android app that can help you calculate the insulin dose by you inputing values such as carbs and blood sugar. It is very similar to the bolus wizard feature you see on most modern insulin pumps.
