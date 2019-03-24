@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 import android.widget.Toolbar;
 
 import java.text.DecimalFormat;
@@ -37,37 +39,64 @@ public class MainActivity extends AppCompatActivity {
         CalculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText KarbEditText = (EditText) findViewById(R.id.KarbEditText);
-                EditText BlodsukkerEditText = (EditText) findViewById(R.id.BlodsukkerEditText);
+                final EditText KarbEditText = (EditText) findViewById(R.id.KarbEditText);
+                final EditText BlodsukkerEditText = (EditText) findViewById(R.id.BlodsukkerEditText);
                 final TextView KarbFaktorEditText = (EditText) findViewById(R.id.KarbFaktorEditText);
                 final TextView InsulinFølsomhetEditText = (EditText) findViewById(R.id.InsulinFølsomhetEditText);
-                TextView InsulindoseTextView = (TextView) findViewById(R.id.InsulindoseTextView);
-                TextView KorreksjonTextView = (TextView) findViewById(R.id.KorreksjonTextView);
-                TextView KarbTextView = (TextView) findViewById(R.id.KarbTextView);
-                int zero = 0;
+                final TextView InsulindoseTextView = (TextView) findViewById(R.id.InsulindoseTextView);
+                final TextView KorreksjonTextView = (TextView) findViewById(R.id.KorreksjonTextView);
+                final TextView KarbTextView = (TextView) findViewById(R.id.KarbTextView);
 
 
-                //REGNER UT DOSEN
+                //Calculating the dose for mmol/l
 
-                double karb = Double.parseDouble(KarbEditText.getText().toString());
-                double blodsukker = Double.parseDouble(BlodsukkerEditText.getText().toString());
-                double karbfaktor = Double.parseDouble(KarbFaktorEditText.getText().toString());
-                double insulinfølsomhet = Double.parseDouble(InsulinFølsomhetEditText.getText().toString());
-                double korre;
+                ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+                toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            double karb = Double.parseDouble(KarbEditText.getText().toString());
+                            double blodsukker = Double.parseDouble(BlodsukkerEditText.getText().toString());
+                            double karbfaktor = Double.parseDouble(KarbFaktorEditText.getText().toString());
+                            double insulinfølsomhet = Double.parseDouble(InsulinFølsomhetEditText.getText().toString());
+                            double korre;
 
-                double kar = karb / karbfaktor;
-                String karbdose = String.format("%.1f", kar);
-                double KorrStart = blodsukker - 5;
-                double korr = KorrStart / insulinfølsomhet;
-                korre = korr;
-                String korreksjon = String.format("%.1f", korre);
-                double ins = korre + kar;
-                final String insulindose = String.format("%.1f", ins);
-                final double insulinDoseValue = Double.valueOf(insulindose);
+                            double kar = karb / karbfaktor;
+                            String karbdose = String.format("%.1f", kar);
+                            double KorrStart = blodsukker - 90;
+                            double korr = KorrStart / insulinfølsomhet;
+                            korre = korr;
+                            String korreksjon = String.format("%.1f", korre);
+                            double ins = korre + kar;
+                            final String insulindose = String.format("%.1f", ins);
+                            final double insulinDoseValue = Double.valueOf(insulindose);
 
-                InsulindoseTextView.setText("Den totale dosen er " + insulindose + " enheter");
-                KorreksjonTextView.setText("Korreksjonen tilsvarer " + korreksjon + " enheter av dosen");
-                KarbTextView.setText("Karbohydratene tilsvarer " + karbdose + " enheter av dosen");
+                            InsulindoseTextView.setText("Den totale dosen er " + insulindose + " enheter");
+                            KorreksjonTextView.setText("Korreksjonen tilsvarer " + korreksjon + " enheter av dosen");
+                            KarbTextView.setText("Karbohydratene tilsvarer " + karbdose + " enheter av dosen");
+                        } else {
+                            double karb = Double.parseDouble(KarbEditText.getText().toString());
+                            double blodsukker = Double.parseDouble(BlodsukkerEditText.getText().toString());
+                            double karbfaktor = Double.parseDouble(KarbFaktorEditText.getText().toString());
+                            double insulinfølsomhet = Double.parseDouble(InsulinFølsomhetEditText.getText().toString());
+                            double korre;
+
+                            double kar = karb / karbfaktor;
+                            String karbdose = String.format("%.1f", kar);
+                            double KorrStart = blodsukker - 5;
+                            double korr = KorrStart / insulinfølsomhet;
+                            korre = korr;
+                            String korreksjon = String.format("%.1f", korre);
+                            double ins = korre + kar;
+                            final String insulindose = String.format("%.1f", ins);
+                            final double insulinDoseValue = Double.valueOf(insulindose);
+
+                            InsulindoseTextView.setText("Den totale dosen er " + insulindose + " enheter");
+                            KorreksjonTextView.setText("Korreksjonen tilsvarer " + korreksjon + " enheter av dosen");
+                            KarbTextView.setText("Karbohydratene tilsvarer " + karbdose + " enheter av dosen");
+                        }
+                    }
+                });
             }
         });
     }
