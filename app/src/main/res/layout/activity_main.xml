@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/KarbEditText"
+        android:id="@+id/carbEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -23,10 +23,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KarbTextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/carbTextView1" />
 
     <EditText
-        android:id="@+id/BlodsukkerEditText"
+        android:id="@+id/bloodsugarEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,10 +41,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BlodTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/bloodsugarTextView" />
 
     <EditText
-        android:id="@+id/KarbFaktorEditText"
+        android:id="@+id/carbRatioEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -59,10 +59,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KarbFaktorTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/carbRatioTextView" />
 
     <EditText
-        android:id="@+id/InsulinFølsomhetEditText"
+        android:id="@+id/sensitivityEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -77,10 +77,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/sensitivityTextView" />
 
     <TextView
-        android:id="@+id/InsulindoseTextView"
+        android:id="@+id/insulinDoseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -89,16 +89,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Insulindose"
+        android:text="Insulin dose"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CalculateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/calculateButton" />
 
     <Button
-        android:id="@+id/CalculateButton"
+        android:id="@+id/calculateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -110,11 +110,12 @@
         android:text="Calculate"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InsulinFølsomhetEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/goalBGeditText" />
 
     <TextView
-        android:id="@+id/KorreksjonTextView"
+        android:id="@+id/correctionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -123,15 +124,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Korreksjon"
+        android:text="Correction dose"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InsulindoseTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/insulinDoseTextView" />
 
     <TextView
-        android:id="@+id/KarbTextView"
+        android:id="@+id/carbTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,15 +141,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Karb"
+        android:text="Carbohydrate dose"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KorreksjonTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/correctionTextView" />
 
     <TextView
-        android:id="@+id/KarbTextView1"
+        android:id="@+id/carbTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -157,7 +158,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Hvor mange karbohydrater skal du spise?"
+        android:text="How many carbs are you going to eat?"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +166,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/BlodTextView"
+        android:id="@+id/bloodsugarTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -174,15 +175,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Hva er blodsukkeret ditt?"
+        android:text="What's your blood sugar?"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KarbEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/carbEditText" />
 
     <TextView
-        android:id="@+id/KarbFaktorTextView"
+        android:id="@+id/carbRatioTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -191,15 +192,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Hvilken karbohydratfaktor har du?"
+        android:text="What's your carb:insulin ratio?"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BlodsukkerEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/bloodsugarEditText" />
 
     <TextView
-        android:id="@+id/InsTextView"
+        android:id="@+id/sensitivityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -208,31 +209,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Hva er insulinfølsomheten din?"
+        android:text="What's your sensitivity factor?"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KarbFaktorEditText" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="ToggleButton"
-        android:textOff="mmol/l"
-        android:textOn="mg/dl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/carbRatioEditText" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/goalBGtextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -240,10 +225,28 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:text="Whats your goal Blood Sugar?"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:text="What kind of units do you use?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KarbTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/sensitivityEditText" />
+
+    <EditText
+        android:id="@+id/goalBGeditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number|numberSigned|numberDecimal"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalBGtextView" />
 
 </android.support.constraint.ConstraintLayout>
