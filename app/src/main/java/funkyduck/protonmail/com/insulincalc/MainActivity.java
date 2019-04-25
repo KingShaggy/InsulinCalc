@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 final String insulindose = String.format("%.1f", ins);
                 final double insulinDoseValue = Double.valueOf(insulindose);
 
-                InsulindoseTextView.setText("Den totale dosen er " + insulindose + " enheter");
+                InsulindoseTextView.setText("The total dose is " + insulindose + " units");
                 KorreksjonTextView.setText("Korreksjonen tilsvarer " + korreksjon + " enheter av dosen");
                 KarbTextView.setText("Karbohydratene tilsvarer " + karbdose + " enheter av dosen");
             }
