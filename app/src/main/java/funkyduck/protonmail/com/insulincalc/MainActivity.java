@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText bloodsugarEditText = findViewById(R.id.bloodsugarEditText);
                 final TextView carbRatioEditText = findViewById(R.id.carbRatioEditText);
                 final TextView insulinSensitivityEditText = findViewById(R.id.sensitivityEditText);
-                TextView insulindoseTextView = findViewById(R.id.insulinDoseTextView);
+                TextView insulinDoseTextView = findViewById(R.id.insulinDoseTextView);
                 TextView correctionTextView = findViewById(R.id.correctionTextView);
                 TextView carbTextView = findViewById(R.id.carbTextView);
                 EditText goalBGeditText = findViewById(R.id.goalBGeditText);
@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
                 double goalBG = Double.parseDouble(goalBGeditText.getText().toString());
 
                 double kar = carb / carbRatio;
-                String carbdose = String.format("%.1f", kar);
+                String carbDose = String.format("%.1f", kar);
                 double corrStart = bloodsugar - goalBG;
                 double korr = corrStart / insulinSensitivity;
                 corre = korr;
                 String correction = String.format("%.1f", corre);
                 double ins = corre + kar;
-                final String insulindose = String.format("%.1f", ins);
+                final String insulinDose = String.format("%.1f", ins);
 
-                insulindoseTextView.setText("The total dose is " + insulindose + " units");
+                insulinDoseTextView.setText("The total dose is " + insulinDose + " units");
                 correctionTextView.setText("The correction accounts for " + correction + " units");
-                carbTextView.setText("The carbs account for " + carbdose + " units");
+                carbTextView.setText("The carbs account for " + carbDose + " units");
             }
         });
     }
