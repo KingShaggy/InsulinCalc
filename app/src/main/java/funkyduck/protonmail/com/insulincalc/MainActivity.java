@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 insulinDoseTextView.setText("The total dose is " + insulinDose + " units");
                 correctionTextView.setText("The correction accounts for " + correction + " units");
-                carbTextView.setText("The carbs account for " + carbDose + " units");
+                carbTextView.setText("The carbs accounts for " + carbDose + " units");
             }
         });
     }
