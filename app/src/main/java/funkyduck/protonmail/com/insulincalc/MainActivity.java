@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
                 double ins = corre + kar;
                 final String insulinDose = String.format("%.1f", ins);
 
-                insulinDoseTextView.setText("The total dose is " + insulinDose + " units");
+                insulinDoseTextView.setText("The total dosage is " + insulinDose + " units");
                 correctionTextView.setText("The correction accounts for " + correction + " units");
-                carbTextView.setText("The carbs accounts for " + carbDose + " units");
+                carbTextView.setText("The carbs account for " + carbDose + " units");
             }
         });
     }
