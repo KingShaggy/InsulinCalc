@@ -34,14 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 double bloodsugar = Double.parseDouble(bloodsugarEditText.getText().toString());
                 double carbRatio = Double.parseDouble(carbRatioEditText.getText().toString());
                 double insulinSensitivity = Double.parseDouble(insulinSensitivityEditText.getText().toString());
-                double corre;
                 double goalBG = Double.parseDouble(goalBGeditText.getText().toString());
 
                 double kar = carb / carbRatio;
                 String carbDose = String.format("%.1f", kar);
                 double corrStart = bloodsugar - goalBG;
-                double korr = corrStart / insulinSensitivity;
-                corre = korr;
+                double corre = corrStart / insulinSensitivity;
                 String correction = String.format("%.1f", corre);
                 double ins = corre + kar;
                 final String insulinDose = String.format("%.1f", ins);
