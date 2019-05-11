@@ -1,53 +1,78 @@
 package funkyduck.protonmail.com.insulincalc;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button CalculateButton = findViewById(R.id.calculateButton);
-        CalculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText carbEditText = findViewById(R.id.carbEditText);
-                EditText bloodsugarEditText = findViewById(R.id.bloodsugarEditText);
-                final TextView carbRatioEditText = findViewById(R.id.carbRatioEditText);
-                final TextView insulinSensitivityEditText = findViewById(R.id.sensitivityEditText);
-                TextView insulinDoseTextView = findViewById(R.id.insulinDoseTextView);
-                TextView correctionTextView = findViewById(R.id.correctionTextView);
-                TextView carbTextView = findViewById(R.id.carbTextView);
-                EditText goalBGeditText = findViewById(R.id.goalBGeditText);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-                //Calculating the dose
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-                double carb = Double.parseDouble(carbEditText.getText().toString());
-                double bloodsugar = Double.parseDouble(bloodsugarEditText.getText().toString());
-                double carbRatio = Double.parseDouble(carbRatioEditText.getText().toString());
-                double insulinSensitivity = Double.parseDouble(insulinSensitivityEditText.getText().toString());
-                double goalBG = Double.parseDouble(goalBGeditText.getText().toString());
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new CalculateFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_calculate);
+        }
+    }
 
-                double kar = carb / carbRatio;
-                String carbDose = String.format("%.1f", kar);
-                double corrStart = bloodsugar - goalBG;
-                double corre = corrStart / insulinSensitivity;
-                String correction = String.format("%.1f", corre);
-                double ins = corre + kar;
-                final String insulinDose = String.format("%.1f", ins);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_calculate:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new CalculateFragment()).commit();
+                break;
+            case R.id.nav_disclaimer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DisclaimerFragment()).commit();
+                break;
+            case R.id.nav_help:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new GuideFragment()).commit();
+                break;
+            case R.id.nav_message:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MessageFragment()).commit();
+                break;
+        }
 
-                insulinDoseTextView.setText("The total dosage is " + insulinDose + " units");
-                correctionTextView.setText("The correction accounts for " + correction + " units");
-                carbTextView.setText("The carbs account for " + carbDose + " units");
-            }
-        });
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+        super.onBackPressed();
+        }
     }
 }
