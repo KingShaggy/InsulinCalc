@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new MessageFragment()).commit();
                 break;
+            case R.id.nav_timer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new TimerFragment()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);

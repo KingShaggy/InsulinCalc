@@ -13,6 +13,7 @@ public class GuideFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guide, container, false);
+        final View view = inflater.inflate(R.layout.fragment_guide, container, false);
+        return view;
     }
 }

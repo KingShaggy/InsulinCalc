@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_calculate"
             android:title="Calculate" />
         <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_timer"
+            android:title="Long-acting insulin timer" />
+        <item
             android:id="@+id/nav_message"
             android:icon="@drawable/ic_message"
             android:title="Contact" />
