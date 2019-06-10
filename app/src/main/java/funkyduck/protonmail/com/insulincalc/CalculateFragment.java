@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculateFragment extends Fragment {
 
@@ -53,28 +54,40 @@ public class CalculateFragment extends Fragment {
                 TextView correctionTextView = view.findViewById(R.id.correctionTextView);
                 TextView carbTextView = view.findViewById(R.id.carbTextView);
 
+                String temp_carb = carbEditText.getText().toString();
+                String temp_BG = bloodsugarEditText.getText().toString();
+                String temp_carbRatio = carbRatioEditText.getText().toString();
+                String temp_insSens = insulinSensitivityEditText.getText().toString();
+                String temp_goalBG = goalBGeditText.getText().toString();
 
-                //Calculating the dose
 
-                double carb = Double.parseDouble(carbEditText.getText().toString());
-                double bloodsugar = Double.parseDouble(bloodsugarEditText.getText().toString());
-                double carbRatio = Double.parseDouble(carbRatioEditText.getText().toString());
-                double insulinSensitivity = Double.parseDouble(insulinSensitivityEditText.getText().toString());
-                double goalBG = Double.parseDouble(goalBGeditText.getText().toString());
+                if (temp_carb.matches("") || temp_BG.matches("") || temp_carbRatio.matches("") || temp_insSens.matches("") || temp_goalBG.matches("")) {
+                    Toast.makeText(getActivity(),"Please fill in all the information before calculating", Toast.LENGTH_LONG).show();
+                }
+                else {
 
-                double kar = carb / carbRatio;
-                String carbDose = String.format("%.1f", kar);
-                double corrStart = bloodsugar - goalBG;
-                double corre = corrStart / insulinSensitivity;
-                String correction = String.format("%.1f", corre);
-                double ins = corre + kar;
-                final String insulinDose = String.format("%.1f", ins);
+                    double carb = Double.parseDouble(temp_carb);
+                    double bloodsugar = Double.parseDouble(temp_BG);
+                    double carbRatio = Double.parseDouble(temp_carbRatio);
+                    double insulinSensitivity = Double.parseDouble(temp_insSens);
+                    double goalBG = Double.parseDouble(temp_goalBG);
 
-                insulinDoseTextView.setText("The total dosage is " + insulinDose + " units");
-                correctionTextView.setText("The correction accounts for " + correction + " units");
-                carbTextView.setText("The carbs account for " + carbDose + " units");
+                    //Calculating the dose
 
-                saveData();
+                    double kar = carb / carbRatio;
+                    String carbDose = String.format("%.1f", kar);
+                    double corrStart = bloodsugar - goalBG;
+                    double corre = corrStart / insulinSensitivity;
+                    String correction = String.format("%.1f", corre);
+                    double ins = corre + kar;
+                    final String insulinDose = String.format("%.1f", ins);
+
+                    insulinDoseTextView.setText("The total dosage is " + insulinDose + " units");
+                    correctionTextView.setText("The correction accounts for " + correction + " units");
+                    carbTextView.setText("The carbs account for " + carbDose + " units");
+
+                    saveData();
+                }
             }
         });
         loadData();
