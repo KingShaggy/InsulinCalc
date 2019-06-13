@@ -10,11 +10,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import lumbrikdev.gmail.com.insulincalc.R;
-import lumbrikdev.gmail.com.insulincalc.CalculateFragment;
-import lumbrikdev.gmail.com.insulincalc.DisclaimerFragment;
-import lumbrikdev.gmail.com.insulincalc.GuideFragment;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 

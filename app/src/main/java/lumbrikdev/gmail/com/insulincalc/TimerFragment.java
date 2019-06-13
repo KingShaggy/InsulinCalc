@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import lumbrikdev.gmail.com.insulincalc.R;
-
 public class TimerFragment extends Fragment {
     TextView mTextViewCountDown;
     Button mStartButton;

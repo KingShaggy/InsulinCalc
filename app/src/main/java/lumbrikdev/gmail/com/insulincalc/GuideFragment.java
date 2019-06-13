@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import lumbrikdev.gmail.com.insulincalc.R;
-
 public class GuideFragment extends Fragment {
 
     @Nullable

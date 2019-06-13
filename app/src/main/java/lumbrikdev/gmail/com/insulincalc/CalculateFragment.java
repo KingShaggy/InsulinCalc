@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import lumbrikdev.gmail.com.insulincalc.R;
-
 public class CalculateFragment extends Fragment {
 
     private EditText bloodsugarEditText;
