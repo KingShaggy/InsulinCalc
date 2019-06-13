@@ -1,4 +1,4 @@
-package funkyduck.protonmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalc;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DisclaimerFragment extends Fragment {
+import lumbrikdev.gmail.com.insulincalc.R;
+
+public class GuideFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_disclaimer, container, false);
+        final View view = inflater.inflate(R.layout.fragment_guide, container, false);
         return view;
     }
 }

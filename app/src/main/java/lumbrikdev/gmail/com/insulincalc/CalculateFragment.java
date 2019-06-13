@@ -1,6 +1,5 @@
-package funkyduck.protonmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import lumbrikdev.gmail.com.insulincalc.R;
 
 public class CalculateFragment extends Fragment {
 

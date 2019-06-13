@@ -1,4 +1,4 @@
-package funkyduck.protonmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+
+import lumbrikdev.gmail.com.insulincalc.R;
 
 public class TimerFragment extends Fragment {
     TextView mTextViewCountDown;
