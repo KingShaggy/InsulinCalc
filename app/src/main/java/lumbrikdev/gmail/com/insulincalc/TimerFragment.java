@@ -1,5 +1,6 @@
 package lumbrikdev.gmail.com.insulincalc;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+import static lumbrikdev.gmail.com.insulincalc.Base_application.ins_alert_ID;
 
 public class TimerFragment extends Fragment {
     TextView mTextViewCountDown;
@@ -33,22 +38,29 @@ public class TimerFragment extends Fragment {
     String mLeft = "millisLeft";
     String eTime = "endTime";
     String timeRun = "timerRunning";
+    SwitchCompat ins_alert_switch;
     public static final String SHARED_PREFS = "sharedPrefs";
 
     public static final String INS_TIME = "insTime";
 
     private String ins_time;
 
+    private NotificationManagerCompat notManager;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_timer, container, false);
+
+        notManager = NotificationManagerCompat.from(requireContext());
 
         mStartButton = view.findViewById(R.id.countdownStartButton);
 
         mTextViewCountDown = view.findViewById(R.id.countdownTextView);
 
         mEditTextLongLasting = view.findViewById(R.id.longLastingEditText);
+
+        ins_alert_switch = view.findViewById(R.id.alert_switch);
 
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +103,9 @@ public class TimerFragment extends Fragment {
             @Override
             public void onFinish() {
                 mTimerRunning = false;
+                if (ins_alert_switch.isChecked()) {
+                    sendNotification();
+                }
             }
         }.start();
 
@@ -157,5 +172,16 @@ public class TimerFragment extends Fragment {
 
     public void updateViews() {
         mEditTextLongLasting.setText(ins_time);
+    }
+    public void sendNotification() {
+        Notification notification = new NotificationCompat.Builder(requireContext(), ins_alert_ID)
+            .setSmallIcon(R.drawable.ic_alert)
+            .setContentTitle("It's time to set insulin!")
+            .setContentText("Your basal countdown has finished")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_REMINDER)
+            .build();
+
+        notManager.notify(1, notification);
     }
 }

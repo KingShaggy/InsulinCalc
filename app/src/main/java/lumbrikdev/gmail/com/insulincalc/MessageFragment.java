@@ -35,7 +35,6 @@ public class MessageFragment extends Fragment {
     }
 
     private void sendMail() {
-        /*String recipient = "lumbrikdev@gmail.com";*/
         String subject = mEditTextSubject.getText().toString();
         String message = mEditTextMessage.getText().toString();
 
