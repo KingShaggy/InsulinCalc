@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+
+import static android.content.Context.MODE_PRIVATE;
 import static lumbrikdev.gmail.com.insulincalc.Base_application.ins_alert_ID;
 
 public class TimerFragment extends Fragment {
@@ -42,6 +44,8 @@ public class TimerFragment extends Fragment {
     public static final String SHARED_PREFS = "sharedPrefs";
 
     public static final String INS_TIME = "insTime";
+
+    public static final Boolean SWITCH_STATE = true;
 
     private String ins_time;
 
@@ -124,7 +128,7 @@ public class TimerFragment extends Fragment {
     public void onStop() {
         super.onStop();
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putLong(mLeft, mTimeLeftInMillis);
@@ -138,7 +142,7 @@ public class TimerFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
 
         mTimeLeftInMillis = prefs.getLong(mLeft, START_TIME_IN_MILLIS);
         mTimerRunning = prefs.getBoolean(timeRun, false);
@@ -156,18 +160,34 @@ public class TimerFragment extends Fragment {
             }
         }
     }
+
     public void saveData() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(INS_TIME, mEditTextLongLasting.getText().toString());
+
+        if (ins_alert_switch.isChecked())
+        {
+            SharedPreferences.Editor editor1 = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE).edit();
+            editor.putBoolean("ins_alert_switch", true);
+            editor1.apply();
+        }
+        else
+        {
+            SharedPreferences.Editor editor1 = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE).edit();
+            editor.putBoolean("ins_alert_switch", false);
+            editor1.apply();
+        }
 
         editor.apply();
     }
 
     public void loadData() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         ins_time = sharedPreferences.getString(INS_TIME, "");
+
+        ins_alert_switch.setChecked(sharedPreferences.getBoolean("ins_alert_switch", true));
     }
 
     public void updateViews() {
