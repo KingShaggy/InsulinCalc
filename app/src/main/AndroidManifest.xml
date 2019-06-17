@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lumbrikdev.gmail.com.insulincalc">
+    package="lumbrikdev.gmail.com.insulincalculator">
 
     <application
-        android:name=".Base_application"
+        android:name="lumbrikdev.gmail.com.insulincalculator.Base_application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Insulin calculator"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="lumbrikdev.gmail.com.insulincalc.MainActivity"
+        <activity android:name="lumbrikdev.gmail.com.insulincalculator.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>

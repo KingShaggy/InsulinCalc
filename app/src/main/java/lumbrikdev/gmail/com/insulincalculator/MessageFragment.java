@@ -1,4 +1,4 @@
-package lumbrikdev.gmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 
 public class MessageFragment extends Fragment {
     private EditText mEditTextSubject;

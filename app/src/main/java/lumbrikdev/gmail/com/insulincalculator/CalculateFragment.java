@@ -1,4 +1,4 @@
-package lumbrikdev.gmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalculator;
 
 import android.content.Context;
 import android.content.SharedPreferences;

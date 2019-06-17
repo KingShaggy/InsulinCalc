@@ -1,4 +1,4 @@
-package lumbrikdev.gmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalculator;
 
 import android.app.Notification;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 import static android.content.Context.MODE_PRIVATE;
-import static lumbrikdev.gmail.com.insulincalc.Base_application.ins_alert_ID;
+import static lumbrikdev.gmail.com.insulincalculator.Base_application.ins_alert_ID;
 
 public class TimerFragment extends Fragment {
     TextView mTextViewCountDown;

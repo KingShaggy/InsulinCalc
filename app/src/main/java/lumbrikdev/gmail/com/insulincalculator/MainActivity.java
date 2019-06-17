@@ -1,4 +1,4 @@
-package lumbrikdev.gmail.com.insulincalc;
+package lumbrikdev.gmail.com.insulincalculator;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,6 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import lumbrikdev.gmail.com.insulincalculator.CalculateFragment;
+import lumbrikdev.gmail.com.insulincalculator.DisclaimerFragment;
+import lumbrikdev.gmail.com.insulincalculator.GuideFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -54,11 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new lumbrikdev.gmail.com.insulincalc.MessageFragment()).commit();
+                        new lumbrikdev.gmail.com.insulincalculator.MessageFragment()).commit();
                 break;
             case R.id.nav_timer:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new lumbrikdev.gmail.com.insulincalc.TimerFragment()).commit();
+                        new lumbrikdev.gmail.com.insulincalculator.TimerFragment()).commit();
                 break;
         }
 
